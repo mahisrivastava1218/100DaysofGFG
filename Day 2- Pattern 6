@@ -1,0 +1,17 @@
+class Solution {
+    //Function to print the pattern.
+     printTriangle(N){
+    let res = "";
+    for(let i=1;i<=N;i++){
+        // console.log(i);
+        for(let j=1;j<=N-i+1;j++){
+            res += j + " ";
+            // console.log(j);
+            // console.log(res);
+        }
+        res += "\n";
+    }
+    console.log(res.trim());
+    //trim is used to remove extra space
+     }
+}
