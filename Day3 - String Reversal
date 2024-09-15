@@ -1,0 +1,60 @@
+class Solution {
+    //Function to reverse a string.
+   reverseString(s)
+    {
+        // //your code here
+        //first method
+        // let arr= s.split('').filter(val => val !== " ");
+        // // console.log(arr);
+        // let arr1 = [];
+        // arr1[0] = arr[arr.length-1];
+        // let i=arr.length-1;
+        // // console.log(arr1[0]);
+
+        // while(i>=0){
+        //     if(arr1.includes(arr[i])){
+        //         // console.log(arr1);
+        //         i--;
+        //     }else{
+        //         arr1.push(arr[i]);
+        //         // console.log(arr1);
+        //         i--;
+        //     }
+        //     // console.log(arr1);
+
+        // }
+        // return arr1.join('');
+         // // TC -Object(N*N); SC-Object(N);
+        //second method
+    //     let res = "";
+    //     res = s[s.length-1];
+    //     let i=s.length-1;
+    //     while(i>=0){
+    //         if(res.includes(s[i]) || s[i] === " "){
+    //             i--;
+    //         }else{
+    //             res += s[i];
+    //             i--;
+    //         }
+         
+    //     }
+    //     return res.trim();
+    // }
+    //TC - O(S^2) //length of the string
+//SC - O(S);
+   //third optimize method
+   let res = "";
+   let i= s.length-1;
+   let seen = new Set();
+   while(i>=0){
+       let char = s[i];
+       if(char !== " " && !seen.has(char)){
+           res += char;
+           seen.add(char);
+       }
+       i--;
+   }
+   return res;
+   //TC- O(S) & SC- O(1);
+}
+}
