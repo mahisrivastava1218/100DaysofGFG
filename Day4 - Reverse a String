@@ -1,0 +1,24 @@
+class Solution {
+     reverse(result,left,right){
+        while(left<right){
+            let temp = result[left];
+            result[left] = result[right];
+            result[right] = temp;
+            left++;
+            right--;
+        }
+    }
+    revStr(s) {
+        // code here
+        // return s.split("").reverse().join('');
+        //O(N) - TC & SC
+        let result = s.split("");
+            let left =0;
+            let right = s.length-1;
+            this.reverse(result,left,right);
+    
+        return result.join('');
+         //O(N) - TC & SC
+    }
+   
+}
