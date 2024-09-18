@@ -1,0 +1,21 @@
+class Solution {
+    //Function to display fibonacci series upto N terms.
+     nFibonacci(N) {
+         let n=N;
+        if(n===0) return [0];
+        if(n===1) return [0,1,1];
+        let fib = [0,1];
+        for (let i = 2; i <= n+1; i++) {
+
+           let sol = fib[i - 1] + fib[i - 2];
+           if(sol<=n){
+                fib.push(sol);
+           }
+            else{
+                break;
+            }
+        }
+    
+    return fib;
+    }
+}
