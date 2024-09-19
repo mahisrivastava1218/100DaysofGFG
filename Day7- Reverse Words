@@ -1,0 +1,59 @@
+class Solution {
+    // Function to reverse words in a given string.
+    reverseWords(str) {
+        // code here
+    
+        let i=0;
+        let str1 = '';
+        let newarr = [];
+        for(let i=0;i<str.length;i++){
+        while(i<str.length && str.charAt(i)!== "."){
+            str1 += str[i];
+            i++;
+        }
+        newarr.push(str1);
+        str1='';
+        }
+         let left = 0;
+         let right = newarr.length-1;
+         while(left<right){
+             let temp = newarr[left];
+             newarr[left] = newarr[right];
+             newarr[right] = temp;
+             
+             left++;
+             right--;
+         }
+        return newarr.join('.');
+        
+        //optimize SC 
+//         function reverseSegment(s, start, end) {
+//         while (start < end) {
+//             let temp = s[start];
+//             s[start] = s[end];
+//             s[end] = temp;
+//             start++;
+//             end--;
+//         }
+
+//         }
+
+//     // Convert the string to an array for mutability
+//     let arr = str.split('');
+//     console.log(arr);
+//     // Reverse the entire array
+//     reverseSegment(arr, 0, arr.length - 1);
+//     console.log(arr);
+//     // Reverse each word in the reversed array
+//     let start = 0;
+//     for (let i = 0; i <= arr.length; i++) {
+//         if (i === arr.length || arr[i] === '.') {
+//             reverseSegment(arr, start, i - 1);
+//             start = i + 1;
+//         }
+//     }
+//   //arr,0,3 - much , start-5 - arr,5,9 - very 
+//     // Convert array back to string
+//     return arr.join('');
+    }
+}
