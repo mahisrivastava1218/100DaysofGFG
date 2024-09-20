@@ -1,0 +1,22 @@
+class Solution {
+    SortedDuplicates(arr,n){
+       let seen = new Set();
+        let duplicates = new Set();
+        
+        // Step 1: Identify duplicates
+        for (let i = 0; i < n; i++) {
+            if (seen.has(arr[i])) {
+                duplicates.add(arr[i]); // Add to duplicates if seen before
+            } else {
+                seen.add(arr[i]); // Add to seen set
+            }
+        }
+        
+        // Step 2: Check for duplicates and sort them
+        if (duplicates.size === 0) {
+            return [-1]; // No duplicates found
+        } else {
+            return Array.from(duplicates).sort((a, b) => a - b);
+        }
+    }
+}
