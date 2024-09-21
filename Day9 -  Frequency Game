@@ -1,0 +1,35 @@
+class Solution {
+/**
+* @param number[] arr
+* @param number n
+
+* @returns number
+*/
+    LargButMinFreq(arr, n) {
+        // code here
+        if(n===0) return 0;
+       const map = new Map();
+     
+       let minfreq= Infinity;
+       let maxkey = -Infinity;
+       
+       for(let i=0;i<n;i++){
+                const current = arr[i];
+                map.set(current,(map.get(current) || 0)+1);
+        
+        }
+        for(let [key,val] of map){
+           
+            if(val<minfreq){
+                minfreq = val;
+                maxkey = key;
+             
+            }
+            else if(val === minfreq && key>maxkey){
+                maxkey = key;
+            }
+        }
+       return maxkey;
+       //TC & SC- O(n)
+    }
+}
