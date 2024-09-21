@@ -1,0 +1,25 @@
+class Solution {
+    maximumFrequency(str) {
+        const map = new Map();
+        let arr =str.split(' ');
+        for(let i=0;i<arr.length;i++){
+            if(!map.has(arr[i])){
+                map.set(arr[i],1);
+            }else{
+                let current = map.get(arr[i]);
+                map.set(arr[i],current+1);
+                
+            }
+            
+        }
+        let maxval = 0;
+        let maxkey = '';
+        for(let [key,val] of map){
+            if(val>maxval){
+                maxval = val;
+                maxkey = key;
+            }
+        }
+        return `${maxkey}`+" "+`${maxval}`;
+    }
+}
