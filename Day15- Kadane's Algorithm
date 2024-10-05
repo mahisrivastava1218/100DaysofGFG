@@ -1,0 +1,19 @@
+class Solution {
+    // Function to find the sum of contiguous subarray with maximum sum.
+    maxSubarraySum(arr) {
+        // code here
+        if(arr.length === 0) return 0;
+        let currsum =0;
+        let maxsum=-Infinity;
+        for(let i=0;i<arr.length;i++){
+            currsum = currsum + arr[i];
+            if(currsum>maxsum){
+                maxsum = currsum;
+            }
+            if(currsum<0){
+                currsum =0;
+            }
+        }
+        return maxsum;
+    }
+}
