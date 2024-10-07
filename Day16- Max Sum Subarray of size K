@@ -1,0 +1,21 @@
+class Solution {
+  maximumSumSubarray(K, Arr, N) {
+    //code here
+    if(N<1 || K<1) return 0;
+    let currsum=0;
+    for(let i=0;i<K;i++){ //O(k)
+        currsum += Arr[i];
+    }
+    let maxsum= currsum;
+    for(let i=K;i<N;i++){ //O(N-K)
+       currsum += Arr[i] - Arr[i-K];
+            if(currsum>maxsum){
+                maxsum = currsum;
+            }
+        
+    }
+    
+    return maxsum;
+    //TC - O(N) SC-O(1);
+  }
+}
