@@ -1,0 +1,36 @@
+class Solution
+{
+    partition(arr, low, high){
+        // Your code here
+      let pivot = arr[high];
+        let i = low - 1;
+
+        // Rearrange elements around the pivot
+        for (let j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                // Swap arr[i] and arr[j]
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        // Place the pivot in its correct position
+        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+
+        // Return the pivot index
+        return i + 1;
+    }
+
+    quickSort(arr, low, high) {
+        if (low < high) {
+            // Get the partition index
+            let pivotIndex = this.partition(arr, low, high);
+
+            // Recursively sort elements before and after the partition
+            this.quickSort(arr, low, pivotIndex - 1);
+            this.quickSort(arr, pivotIndex + 1, high);
+        }
+        return arr;
+    }
+    
+}
