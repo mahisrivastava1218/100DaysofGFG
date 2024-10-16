@@ -1,0 +1,11 @@
+class Solution {
+    search(arr, x) {
+        // write your code here
+        for(let index=0;index<arr.length;index++){
+            if(arr[index] === x){
+                return index;
+            }
+        }
+        return -1;
+    }
+}
