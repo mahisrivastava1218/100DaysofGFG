@@ -1,0 +1,32 @@
+class Solution {
+    
+     getSingle(arr) {
+    // code here
+    // const map = new Map();
+    // let prevfreq=1;
+    // for(let i=0;i<arr.length;i++){
+    //     if(!map.has(arr[i])){
+    //         map.set(arr[i],1);
+    //     }else{
+    //          prevfreq = map.get(arr[i]);
+    //         map.set(arr[i],prevfreq+1);
+    //     }
+    // }
+    // for(let [key,val] of map){
+    //     if(val%2 != 0){
+    //         return key;
+    //     }
+    // }
+    //TC- O(n) SC-O(n)(map);
+     let single = 0;
+
+    // XOR all elements of the array
+
+    for (let i = 0; i < arr.length; i++) {
+        single ^= arr[i];
+    }
+
+    return single;
+     //TC- O(n) SC-O(1); //XOR method
+   }
+}
