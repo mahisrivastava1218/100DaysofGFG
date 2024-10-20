@@ -1,0 +1,33 @@
+ class Solution{
+ roundToNearest(str) {
+       
+        let num = BigInt(str); // Convert input string to BigInt for large number handling
+        let leadingZeros = str.length - str.replace(/^0+/, '').length;
+        // // If the number is already a multiple of 10, return it as is
+        if (num % 10n === 0n) {
+            return str; // Preserve the original string (including leading zeros) if it's already a multiple of 10
+        }
+
+        // // If the number is divisible by 5 but not by 10, round down by 5
+        if (num % 5n === 0n && num % 10n !== 0n) {
+            num = num - 5n;
+        }
+        // // If the last digit is 1, 2, 3, or 4, round down to the nearest 10
+        else if (num % 10n <= 4n) {
+            num = num - (num % 10n);
+        }
+        // // If the last digit is 6, 7, 8, or 9, round up to the nearest 10
+        else if (num % 10n >= 6n) {
+            num = num + (10n - (num % 10n));
+        }
+        // // If the last digit is 5, round down to the nearest 10
+        else {
+            num = num - 5n;
+        }
+
+         let result = num.toString();
+        return '0'.repeat(leadingZeros) + result;
+      
+            
+    }
+    }
