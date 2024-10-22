@@ -1,0 +1,29 @@
+class Solution {
+    reversedBits(x){
+       x = BigInt(x); // Ensure x is treated as a BigInt
+    let l = 31n;   // Left pointer (most significant bit)
+    let r = 0n;    // Right pointer (least significant bit)
+
+    while (l > r) {
+        // Extract the l-th and r-th bits
+        //shift l if it equal to 0 then 0 for ex shift 31 and check 0 or 1
+        let lbit = (x & (1n << l)) === 0n ? 0n : 1n;
+        //shift r for ex-0 if 0 then 0 if 1 bit then 1
+        let rbit = (x & (1n << r)) === 0n ? 0n : 1n;
+
+        // If lbit and rbit are different, we need to flip them
+        if (lbit !== rbit) {
+            // Flip the l-th bit //swap by using xor IT TOGGLE BITS)
+            x = x ^ (1n << l);
+            // Flip the r-th bit
+            x = x ^ (1n << r);
+        }
+
+        // Move the pointers
+        l--;
+        r++;
+    }
+    //convert bigint to number
+    return Number(x);
+}
+}
