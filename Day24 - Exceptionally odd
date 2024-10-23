@@ -1,0 +1,27 @@
+class Solution{
+    getOddOccurrence(arr,n){
+        //code here
+        // const map = new Map();
+        // for(let i=0;i<n;i++){
+        //      if(!map.has(arr[i])){
+        //          map.set(arr[i],1)
+        //      }else{
+        //          let prevfreq= map.get(arr[i]);
+        //          map.set(arr[i],prevfreq+1);
+        //      }
+        // }
+        // for(let [key,val] of map){
+        //     if(val%2!==0){
+        //         return key;
+        //     }
+        // }
+        // return 0;
+        //TC- O(n) SC-O(n)
+        let result=0;
+        for(let i=0;i<n;i++){
+             result ^= arr[i];
+        }
+        return result;
+        //TC-O(N) SC-O(1)
+    }
+}
