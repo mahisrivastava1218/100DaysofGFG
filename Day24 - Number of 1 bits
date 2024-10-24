@@ -1,0 +1,16 @@
+class Solution {
+    
+    setBits(n)
+    {
+        n=BigInt(n);
+        //your code here
+        let count = 0n;
+        while(n!==0n){
+            count += (n & 1n);
+          n >>= 1n;
+        }
+        // convert to number
+        return Number(count);
+        
+    }
+}
