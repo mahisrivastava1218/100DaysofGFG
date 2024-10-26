@@ -1,0 +1,56 @@
+class Solution {
+    getPairs(arr) {
+        // code here
+        //i!=j and arr[i]+arr[j]==0 // o exception duplicate case
+        // let res=[];
+        // arr=arr.sort((a,b)=>a-b); //-10,-9,-6,-5,-1,0,1,4,6,8
+        // let seen = new Set();
+        // for(let i=0;i<arr.length;i++){
+        //     for(let j=i+1;j<arr.length;j++){
+        //         if(arr[i]+arr[j] === 0){
+        //             //console.log(res);
+        //             if(!seen.has(`${arr[i]},${arr[j]}`)){
+        //               res.push([arr[i],arr[j]]);
+        //               seen.add(`${arr[i]},${arr[j]}`)
+        //             }
+        //         }
+        //     }
+        // }
+        // return res; //TC-O(n^2) SC-O(n)
+        
+        //  let res=[];
+        // arr=arr.sort((a,b)=>a-b); //-10,-9,-6,-5,-1,0,1,4,6,8
+        // for(let i=0;i<arr.length;i++){
+        //     for(let j=i+1;j<arr.length;j++){
+        //         if(arr[i]+arr[j] === 0){
+        //             //console.log(res);
+        //             if(!res.some(pair => pair[0] === arr[i] && pair[1] === arr[j])){
+        //               res.push([arr[i],arr[j]]);
+        //             }
+        //         }
+        //     }
+        // }
+        // return res; //TC-O(n^3) sc-O(n)
+   
+        arr.sort((a,b)=>a-b); //-10,-9,-6,-5,-1,0,1,4,6,8
+        //two pointer approach //-4,-1,-1,0,1,2
+        //left=0 right=5 sum=2 right=4 sum=3 right=3 sum-4 left=1 sum==-1 
+        let left=0, right=arr.length-1, res=[];
+        while(left<right){
+            let sum = arr[left]+arr[right];
+            if(sum === 0){
+                res.push([arr[left],arr[right]]);
+                left++;
+                right--;
+                while(left<right && arr[left] === arr[left-1]) left++;
+                while(left<right && arr[right]=== arr[right+1]) right--;
+            }else if(sum<0){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return res;
+        //TC-O(nlogn) sc-O(n+logn)-O(n) //optimize now
+    }
+}
