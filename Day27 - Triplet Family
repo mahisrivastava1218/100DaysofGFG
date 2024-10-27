@@ -1,0 +1,17 @@
+class Solution {
+    findTriplet(arr) {
+        // code here
+        //1+2,1+3 1+4 1+5 if(arr.includes(sum)) return true; else continue
+        let sum = 0;
+        for(let i=0;i<arr.length;i++){
+            for(let j=i+1;j<arr.length;j++){
+                sum = arr[i]+arr[j];
+                if(arr.includes(sum)){
+                    return true;
+                    break;
+                }
+            }
+        }
+    }
+}
+//TC-O(n^2) tc-O(1);
