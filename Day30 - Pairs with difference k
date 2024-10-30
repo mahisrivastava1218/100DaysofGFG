@@ -1,0 +1,34 @@
+class Solution {
+    countPairsWithDiffK(arr, k) {
+        // code here
+        //bruit force //1,5,3,4,2 - 5,2 1,3 count++ 
+        //duplicate consider different pair
+        // if(arr.length === 1) return 0;
+        // let count=0;
+        // for(let i=0;i<arr.length;i++){
+        //     for(let j=i+1;j<arr.length;j++){
+        //         if(Math.abs(arr[i] - arr[j]) === k){
+        //             count++;
+        //         }
+        //     }
+        // }
+        // return count;
+        //O(n^2) ,sc-O(1))
+        const map = new Map();
+        for(let i=0;i<arr.length;i++){
+           map.set(arr[i], (map.get(arr[i])||0)+ 1);
+        }
+        //after map check arr[j]-k =sub if sub is present them pair present
+        //then multiply with arr[i]*no.of times(arr[j]);
+       let count =0;
+        for(let [key,val] of map){
+           let  sub = key-k;
+           //to avoid double counting
+            if(map.has(sub) && sub<=key){
+                count += val * map.get(sub);
+            }
+        }
+        return count;
+        //TC-O(n) sc=O(n)
+    }
+}
