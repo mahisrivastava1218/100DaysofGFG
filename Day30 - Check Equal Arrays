@@ -1,0 +1,40 @@
+class Solution {
+        check(arr1, arr2) {
+        if (arr1.length !== arr2.length) {
+            return false;
+        }
+        // arr1.sort((a,b)=>a-b);
+        // arr2.sort((a,b)=>a-b);
+        // for(let i=0;i<arr1.length;i++){
+        //     if(arr1[i] !== arr2[i]){
+        //         return false;
+        //     }
+        // }
+        // return true;
+        // //TC- O(nlogn) sc-O(1);
+        const map= new Map();
+        for(let i=0;i<arr1.length;i++){
+            if(!map.has(arr1[i])){
+                map.set(arr1[i],1);
+            }else{
+                map.set(arr1[i],map.get(arr1[i])+1);
+            }
+        }
+        let res=0;
+        for(let i=0;i<arr2.length;i++){
+            if(!map.has(arr2[i])){
+                return false;
+            }else{
+                let prevfreq = map.get(arr2[i]);
+                map.set(arr2[i],prevfreq-1);
+            }
+        }
+        for(let val of map.values()){
+            if(val !== 0){
+                return false;
+            }
+        }
+      return true;
+       //TC-O(n) SC-O(n)(due to map storage) optimal
+    }
+}
