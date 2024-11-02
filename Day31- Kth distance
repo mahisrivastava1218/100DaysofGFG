@@ -1,0 +1,22 @@
+class Solution {
+    checkDuplicatesWithinK(arr, k) {
+        // your code //kth dis duplicacy 
+        //only go to kth dis if repeated then true
+        //create map count freq if map.has() then return true;
+        if(k>=arr.length) return false;
+        const map = new Map();
+        for(let i=0;i<arr.length;i++){
+            if(!map.has(arr[i])){
+                map.set(arr[i],1);
+            }else{
+                return true;
+            }
+            // Sliding Window Mechanism
+            if(i>=k){
+                map.delete(arr[i-k]);
+            }
+        }
+        return false;
+        //TC-O(n) sc-O(k)
+    }
+}
