@@ -1,0 +1,22 @@
+class Solution {
+    //Function to print the pattern.
+    printTriangle(N)
+    {
+        //your code here
+        let pattern="";
+        let size=N;
+        // if(N==1) return 1;
+        for(let i=1;i<=N;i++){
+            for(let j=1;j<=size;j++){
+                pattern += j+" ";
+            }
+            if(i<N){
+            pattern += "\n";
+            }
+             size--;
+        }
+         console.log(pattern);
+        // return pattern;
+    }
+    
+}
