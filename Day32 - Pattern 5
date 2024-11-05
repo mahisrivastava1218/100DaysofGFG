@@ -1,0 +1,18 @@
+class Solution {
+    //Function to print triangle pattern with N lines.
+    printTriangle(N) {
+        //your code here
+        let size = N;
+        let pattern="";
+        for(let i=1;i<=N;i++){
+            for(let i=1;i<=size;i++){
+                pattern +="* "
+            }
+            if(i<N){
+            pattern += "\n";
+            }
+            size--;
+        }
+        console.log(pattern);
+    }
+}
