@@ -1,0 +1,23 @@
+class Solution {
+    // Function to find the leaders in the array.
+    leaders(a) {
+        // code here
+        let ans=[]; 
+        let res= false;
+        for(let i=0;i<a.length-1;i++){
+            for(let j=i+1;j<a.length;j++){
+              if(a[i]>=a[j]){
+                res = true;
+              }else{
+                  res = false;
+                  break;
+              }
+            }
+            if(res === true){
+                ans.push(a[i]);
+            }
+        }
+        ans.push(a[a.length-1]);
+        return ans;
+    }
+}
