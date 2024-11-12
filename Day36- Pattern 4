@@ -1,0 +1,18 @@
+class Solution
+{
+    //Function to print the pattern.
+    printTriangle(N)
+    {
+        //your code here
+        let res="";
+        for(let i=1;i<=N;i++){
+            for(let j=1;j<=i;j++){
+                res += i+" ";
+            }
+           if(i<N){
+            res += "\n";
+            }
+        }
+        console.log(res);
+    }
+}
