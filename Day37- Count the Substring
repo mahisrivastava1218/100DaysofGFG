@@ -1,0 +1,12 @@
+class Solution {
+    isSubSequence(A,B){
+    let i = 0, j = 0;
+    while (i < A.length && j < B.length) {
+        if (A[i] === B[j]) {
+            i++; // Move the pointer for s1 when there's a match
+        }
+        j++; // Always move the pointer for s2
+    }
+    return i === A.length;
+    }
+}
