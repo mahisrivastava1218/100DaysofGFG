@@ -1,0 +1,41 @@
+class Solution {
+    // Function returns the second largest element
+    getSecondLargest(arr) {
+        // Code Here
+        //first max store then find ele greater than all less than max
+        //bruite force set remove duplicacy short arr des thrn print second
+        // let max= -Infinity
+        // for(let i=0;i<arr.length;i++){
+        //     if(arr[i]>max){
+        //         max=arr[i];
+        //     }
+        // }
+        // let secmax=-Infinity
+        // for(let i=0;i<arr.length;i++){
+        //     if(arr[i]<max && arr[i]>secmax){
+        //       secmax = arr[i];
+        //     }
+        // }
+        // return secmax === -Infinity ? -1: secmax;
+        //TC - O(n+m) SC-O(1)
+        //optimize
+        let max= -Infinity;
+        let secmax=-Infinity
+        for(let i=0;i<arr.length;i++){
+              if(arr[i]>max){
+                secmax = max;
+                max=arr[i];
+              }else if(arr[i]<max && arr[i]>secmax){
+               secmax = arr[i];
+              } 
+        }
+        return secmax === -Infinity ? -1: secmax;
+        //TC- O(n) SC-O(1)
+        // const set = new Set(arr);
+        // let res= Array.from(set);
+        // res.sort((a,b)=>b-a);
+        // if(res.length <= 1) return -1;
+        // return res[1];
+        //tc- O(nlogn) sc-O(n)
+    }
+}
