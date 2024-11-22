@@ -1,0 +1,19 @@
+class Solution {
+    //Function to find the sum of elements common in two arrays.
+    commonSum(n1, n2, arr1, arr2)
+    {
+        //your code here
+         const MOD = 1e9 + 7;
+        const set = new Set(arr1);
+        let sum = 0;
+
+        for (const num of arr2) {
+            if (set.has(num)) {
+                sum = (sum + num) % MOD;
+                set.delete(num); // Avoid counting duplicates
+            }
+        }
+
+        return sum;
+    }
+}
