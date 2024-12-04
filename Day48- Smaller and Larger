@@ -1,0 +1,18 @@
+class Solution {
+    // Function to get the count of elements in the array which are strictly
+    // less than x and strictly more than x.
+    getMoreAndLess(arr, x) {
+        // your code here
+        let mincount=0;
+        let maxcount=0;
+        for(let i=0;i<arr.length;i++){
+            if(arr[i]<=x){
+                mincount++;
+            }
+            if(arr[i]>=x){
+                maxcount++;
+            }
+        }
+        return [mincount,maxcount];
+    }
+}
