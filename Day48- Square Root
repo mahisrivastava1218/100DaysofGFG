@@ -1,0 +1,7 @@
+class Solution {
+
+    floorSqrt(n) {
+        // your code here
+       return Math.floor(Math.sqrt(n));
+    }
+}
