@@ -1,0 +1,56 @@
+class Solution {
+    mergeArrays(a, b) {
+    //bruite force approach
+    // let n= a.length;
+    // let m= b.length;
+    // let c = [];
+    // // console.log(c.length);
+    // let left=0;
+    // let right=0;
+    // while(left<n && right<m){
+    //     if(a[left]<= b[right]){
+    //         c.push(a[left]);
+    //         left++;
+    //     }else{
+    //         c.push(b[right]);
+    //         right++;
+    //     }
+    // }
+    // while(left<n){
+    //     c.push(a[left]);
+    //     left++;
+    // }
+    // while(right<m){
+    //     c.push(b[right]);
+    //     right++;
+    // }
+    // for(let i=0;i<n+m;i++){
+    //     if(i<n){
+    //         a[i]= c[i];
+    //     }else{
+    //      //5-2=3 //3-3=0 b[0]=c[3] b[4-3]= b[1]=c[4] b[2]=c[5]
+    //       b[i-n] = c[i]
+    //     }
+    // }
+    // return a+"\n"+b;
+    //tc&SC- O(n+m)
+    let left=a.length-1;
+    let right=0;
+    let m= b.length;
+    while(left>=0 && right<m){
+        if(a[left]>b[right]){
+            [a[left],b[right]] = [b[right],a[left]]
+            left--;
+            right++;
+        }else{
+            break;
+        }
+    }
+    a.sort((a,b)=>a-b);
+    b.sort((a,b)=>a-b);
+    return a+"\n"+b;
+    //tc- O(min(n+m)+nlogn+mlogm) sc- O(1)
+    
+    
+    }
+}
