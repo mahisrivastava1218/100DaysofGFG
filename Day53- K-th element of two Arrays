@@ -1,0 +1,43 @@
+
+class Solution {
+    kthElement(a, b, k) {
+        // code here
+        //merge
+        let n = a.length;
+        let m = b.length;
+        let left=0;
+        let right=0;
+        let count=0;
+        while(left<n && right<m){
+            if(a[left]<=b[right]){
+                count++;
+                if(count === k){
+                    return a[left];
+                }
+                left++;
+            }else {
+                count++;
+                if(count === k){
+                    return b[right];
+                }
+                right++;
+            }
+        }
+        while(left<n){
+            count++;
+            if(count === k){
+                    return a[left];
+            }
+             left++;
+        }
+        while(right<m){
+            count++;
+             if(count === k){
+                    return b[right];
+            }
+             right++;
+        }
+        return -1;
+        //TC-O(k)
+    }
+}
