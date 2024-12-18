@@ -1,0 +1,63 @@
+class Solution {
+    // Function to solve the problem.
+    // aggressiveCows(stalls, k) {
+    //   let arr = stalls.sort((a,b)=>a-b);
+    //   let min= arr[0];
+    //   let max= arr[arr.length-1]
+    //   for(let i=1;i<=max-min;i++){
+    //       if(this.canWePlace(arr,i,k) === true){
+    //           continue;
+    //       }else{
+    //           return (i-1);
+    //       }
+    //   }
+    // }
+    // canWePlace(arr,distance,cows){
+    //     let firststall = arr[0];
+    //     let countcows = 1;
+    //     for(let i=0;i<arr.length;i++){
+    //         //firststall always change it will be previous stall
+    //         if(arr[i]-firststall >= distance){
+    //             countcows++;
+    //             firststall = arr[i];
+    //         }
+    //         if(countcows === cows){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    //tc- O(nlogn+log(max)*n)-O(nlogmax) sc-O(1)
+    //optimize
+    //binary search
+    canWePlace(stalls,k,dis){
+        let firststall = stalls[0];
+        let countcows = 1;
+        for(let i=1;i<stalls.length;i++){
+            //firststall always change it will be previous stall
+            if(stalls[i]-firststall >= dis){
+                 countcows++;
+                 firststall = stalls[i];
+            }
+            if(countcows>=k) return true;
+        }
+        return false;
+    }
+    aggressiveCows(stalls, k) {
+       stalls.sort((a,b)=>a-b);
+       let low= 1;
+       let high= stalls[stalls.length-1]-stalls[0];
+       let result= 0;
+       while(low <= high){
+           let mid = Math.floor((low+high)/2);
+           if(this.canWePlace(stalls,k,mid) === true){
+             result = mid;
+             low = mid+1;
+           }else{
+              high = mid-1;
+           }
+       }
+       return high;
+    }
+    //O(nlogn+logbase2(range)*O(n))- O(n.logMaxdistance)
+}
