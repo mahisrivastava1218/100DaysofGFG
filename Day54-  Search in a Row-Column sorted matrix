@@ -1,0 +1,37 @@
+class Solution {
+
+    matSearch(mat, x) {
+        // code here
+        // for(let i=0;i<mat.length;i++){
+        //     for(let j=0;j<mat[i].length;j++){
+        //         if(mat[i][j] === x){
+        //             return true;
+        //         }
+        //     }
+        // }
+        // return false;
+        //tc -O(n*m) sc-O(1)
+        //Staircase search
+       let rows = mat.length;
+       if(rows === 0) return false;
+       let cols = mat[0].length;
+       if(mat[0].length === 0) return false;
+       let row = 0;
+       let col = cols-1;
+       while(row<rows){
+          if(col <0) return false;
+          if(mat[row][col] > x){
+              col--;
+          }else if(mat[row][col] === x){
+             return true;
+          }else{
+            row++;
+            if(row <rows){
+              col = mat[row].length-1;
+            }
+         }
+       }
+       //tc - O(n+m);
+        return false;
+    }
+}
