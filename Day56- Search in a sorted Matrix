@@ -1,0 +1,56 @@
+function searchMatrix(mat, x) {
+  // code here
+  //binary search
+  // for(let i=0;i<mat.length;i++){
+  //     let left =0;
+  //     let right = mat[0].length-1;
+  //     while(left<= right){
+  //         let mid = Math.floor((left+right)/2);
+  //         if(mat[mid]<x){
+  //             left= mid+1;
+  //         }else if(mat[mid] === x ){
+  //             return true;
+  //         }else{
+  //            right = mid-1;;
+  //         }
+  //     }
+  // }
+  // return false
+  //staircase
+  // let row =0;
+  // let col = mat[0].length-1;
+  // while(row< mat.length && col>=0){
+  //   if(mat[row][col] < x){
+  //     row++;
+  //   }else if(mat[row][col] === x){
+  //     return true;
+  //   }else{
+  //     col--;
+  //   }
+  // }
+  // return false;
+  //tc- O(m+n) SC-O(1)
+  //flatten process + binary search
+  let low=0;
+  let rows = mat.length;
+  let cols= mat[0].length;
+  let high = rows*cols-1;
+  while(low<=high){
+    let mid = Math.floor((low+high)/2);
+    let row = Math.floor(mid/cols);
+    let col = mid%cols;
+    // console.log(mid);
+    // console.log(high);
+    // console.log(low);
+    console.log(mat[row][col]);
+    if(mat[row][col] < x){
+       low = mid+1;      
+    }else if(mat[row][col] === x){
+      return true;
+    }else{
+      high = mid-1;
+    }
+  }
+  return false;
+  //tc- O(log(n*m)) SC-O(1)
+}
