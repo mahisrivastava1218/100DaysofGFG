@@ -1,0 +1,25 @@
+function twoSum(arr, target) {
+    // for(let i=0;i<arr.length;i++){
+    //   let left = target-arr[i];
+    //   for(let j=i+1;j<arr.length;j++){
+    //     if(arr[j] === left){
+    //       return true;
+    //     }
+    //   }
+    // }
+    // return false;
+    //O(n^2) 
+    //second approach binary search work if array is sorted
+    //tc- O(n*logm)
+    //third approach using map
+     const map = new Map();
+      for(let i=0;i<arr.length;i++){
+         let left = target-arr[i];
+         if(map.has(left)){
+          return true;
+         }
+         map.set(arr[i], (map.get(arr[i]) || 0) +1);
+      }
+      return false;
+      //tc-O(n) sc-O(n)
+} 
