@@ -1,0 +1,33 @@
+function findTriplets(arr) {
+  let indexsortarr = arr.map((val, idx) => [BigInt(val), idx]).sort((a, b) => {
+    if (a[0] < b[0]) return -1;
+    if (a[0] > b[0]) return 1;
+    return 0;
+  });
+  let n =indexsortarr.length;
+  let res=[];
+  for(let i=0;i<n-2;i++){
+    let target = -indexsortarr[i][0];
+    let left = i+1;
+    let right=n-1;
+    while(left<right){
+      let twoSum =  indexsortarr[left][0]+indexsortarr[right][0];
+      if(twoSum == target){
+        res.push([indexsortarr[i][1], indexsortarr[left][1], indexsortarr[right][1]]);
+      
+      while (left < right && indexsortarr[left][0] === indexsortarr[left + 1][0]) left++;
+       while (left < right && indexsortarr[left][0] === indexsortarr[left + 1][0]) right--;
+       left++;
+       right--;
+       }else if(twoSum < target){
+        left++;
+      }else{
+        right--;
+      }
+    }
+  }
+  res = res.map(triplet=> triplet.sort((a,b)=>a-b));
+  res.sort((a,b)=>a[0]-b[0])
+  
+  return res;
+} 
