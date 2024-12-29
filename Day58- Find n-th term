@@ -1,0 +1,19 @@
+function f(n){
+        let mod=10 ** 9 + 7;
+        let f= new Array(n+1).fill(0);
+           f[1]=1;
+           f[2]=1;
+         
+        for (let i = 3; i <= n; i++) {
+            f[i] = (i * f[i - 1]) % mod; // First term
+            f[i] = (f[i] - ((i - 1) * f[i - 2]) % mod + mod) % mod; // Second term
+            f[i] = (f[i] + ((i - 2) * 3) % mod); // Third term
+        }
+         return f[n];
+    }
+          
+    function nthTerm(n) {
+      
+          return f(n);
+    }
+  
