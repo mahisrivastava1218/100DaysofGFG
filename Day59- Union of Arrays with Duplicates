@@ -1,0 +1,11 @@
+function findUnion(a, b) {
+  // code here
+  //doing set of 1 if set not has present then push
+  const set=new Set(a);
+  for(let i=0;i<b.length;i++){
+    if(!set.has(b[i])){
+       set.add(b[i]);
+    }
+  }
+  return set.size;
+}
