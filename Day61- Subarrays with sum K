@@ -1,0 +1,32 @@
+function countSubarrays(arr, k) {
+  let count=0;
+  for(let i=0;i<arr.length;i++){
+      let sum=0;
+      for(let j=i;j<arr.length;j++){
+          sum+=arr[j];
+          if(arr[i]+sum === k){
+              count++;
+          }
+      }
+  }
+  return count;
+}
+//tc-O(n*n) sc-O(1)
+//optimize approach Hashmap
+function countSubarrays(arr, k) {
+  let count=0;
+  const map = new Map();
+  let currsum =0;
+  for(let val of arr){
+      currsum += val;
+      if(currsum === k){
+        count++;
+      }
+      if(map.has(currsum-k)){
+        count += map.get(currsum-k);  
+      }
+      map.set(currsum, (map.get(currsum)||0)+1);
+  }
+  return count;
+}
+//tc-O(n) SC-O(n)
