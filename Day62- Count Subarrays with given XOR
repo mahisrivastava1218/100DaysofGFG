@@ -1,0 +1,38 @@
+// function subarrayXor(arr, k) {
+//   // your code here
+//   let count=0;
+//   for(let i=0;i<arr.length;i++){
+//       let sum = arr[i];
+//       if(sum === k){
+//           count++;
+//       }
+//       for(let j=i+1;j<arr.length;j++){
+//           sum = sum^arr[j];
+//           if(sum === k){
+//               count++;
+//               // console.log(count);
+//           }
+//       }
+//   }
+//   return count;
+// }
+//tc-O(n^2) sc-O(1);
+
+//optimize //by hashmap
+function subarrayXor(arr, k) {
+  // your code here
+  let count=0;
+  let sum=0;
+  const subarrayMap = new Map();
+  //hadle when sum==k when subarray itself equals to k
+  subarrayMap.set(0,1);
+  for(let i=0;i<arr.length;i++){
+      sum ^= arr[i];
+      if(subarrayMap.has(sum^k)){
+        count += subarrayMap.get(sum^k);
+      }
+      subarrayMap.set(sum, (subarrayMap.get(sum)||0)+1);
+  }
+  return count;
+}
+///tc- O(n) sc-O(n)
