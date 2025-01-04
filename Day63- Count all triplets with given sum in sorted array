@@ -1,0 +1,45 @@
+
+function countTriplets(arr, target) {
+  let count=0;
+  for(let i=0;i<arr.length;i++){
+      let left=i+1;
+      let right = arr.length-1;
+      while(left<right){
+          let sum = arr[i]+arr[left]+arr[right];
+          if(sum>target){
+            right--;
+          }else if(sum<target){
+            left++;
+          }else if(sum === target){
+              let leftele = arr[left];
+              let rightele = arr[right];
+              if(leftele === rightele){
+                let n =right-left+1;
+                count+=(n*(n-1))/2;
+                break;
+              }else{
+                
+              let cnt1=0;
+              let cnt2=0;
+              while(left<=right && arr[left]===leftele){
+                cnt1++;
+                console.log(arr[i],arr[left],arr[right],cnt1,'left');
+                left++;
+              }
+              while(left<=right && arr[right]===rightele){
+                cnt2++;
+                console.log(arr[i],arr[left],arr[right],cnt2,'right');
+                right--;
+              }
+              count += cnt1*cnt2;
+            }
+          }
+      }
+  }
+  return count;
+}
+//tc-O(n^2) sc-O(1)
+console.log(countTriplets([-3, -1, -1, 0, 1, 2], -2)); 
+console.log(countTriplets([-2, 0, 1, 1, 5],1)); 
+console.log(countTriplets([-3, -1, -1, 0, 1, 2,2,2,2], -2)); 
+console.log(countTriplets([-20, -15, -10, -9, -3, -2,0,10,10, 12,15], 5)); 
