@@ -1,0 +1,21 @@
+function countPairs(arr, target) {
+    arr.sort((a,b)=>a-b);
+    let left=0;
+    let count=0;
+    let n=arr.length;
+    let right=n-1;
+    while(left<right){
+        let sum = arr[left]+arr[right];
+        if(sum >= target){
+            right--;
+        }else{
+            count += (right-left);
+            left++;
+        }
+    }
+    return count;
+}
+console.log(countPairs([7, 2, 5, 3],8));
+console.log(countPairs([5, 2, 3, 2, 4, 1],5));
+console.log(countPairs([2, 1, 8, 3, 4, 7, 6, 5],7));
+console.log(countPairs([10,3,7,4,1],15));
