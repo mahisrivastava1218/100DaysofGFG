@@ -1,0 +1,77 @@
+function countTriangles(arr) {
+    // code here
+    arr.sort((a,b)=>a-b)
+    let count=0;
+    for(let end=0;end>=2;end--){
+        let start=0;
+        let mid=end-1;
+        while(start<mid){
+            if(arr[start]+arr[mid]>arr[end]){
+                count += (mid-start);
+                mid--;
+            }else{
+                start++;
+            }
+        }
+        return count;
+    }
+    while(start<arr.length-2){
+        let sum = arr[start]+arr[mid];
+        // console.log(start,mid,end);
+        // console.log(sum)
+        if(sum>arr[end]){
+            // console.log(arr[start],arr[mid],arr[end])
+            count++;
+            if(end<arr.length-1){
+             end++;
+            }else if(mid<arr.length-2){
+                mid++;
+                end=mid+1;
+            }else{
+                start++;
+                mid=start+1;
+               end= mid+1;
+            }
+            // console.log(start,mid,end+'take sum')
+        }else{
+            if(mid<arr.length-2){
+                mid++;
+                end=mid+1;
+            }else{
+                start++;
+                mid=start+1;
+                end=mid+1;
+            }
+            // console.log(start,mid,end+'not take sum')
+        }
+        // console.log(count);
+    }
+    return count;
+    
+}
+//optimize approach
+function countTriangles(arr) {
+    // code here
+    arr.sort((a,b)=>a-b)
+    let count=0;
+    for(let end=arr.length-1;end>=2;end--){
+        let start=0;
+        let mid=end-1;
+        while(start<mid){
+            if(arr[start]+arr[mid]>arr[end]){
+                count += (mid-start);
+                mid--;
+            }else{
+                start++;
+            }
+        }
+        
+    }
+    return count;
+    
+}
+//TC-O(n^2) SC-O(n)
+console.log(countTriangles([4,6,3,7]));
+console.log(countTriangles([10, 21, 22, 100, 101, 200, 300]));
+console.log(countTriangles([1,2,3]))
+console.log(countTriangles([4,6,3,7,8,8]))
