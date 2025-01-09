@@ -1,0 +1,46 @@
+//Bruite force approach
+function subarraySum(arr, target) {
+    // code here
+    for(let i=0;i<arr.length;i++){
+        let sum = arr[i];
+        if(sum === target){
+            return [i+1,i+1];
+        }
+        for(let j=i+1;j<arr.length;j++){
+             sum +=  arr[j];
+            if(sum === target){
+                return [i+1,j+1];
+                break;
+            }
+        }
+    }
+    return [-1];
+}
+//time complexity-O(n^2) space complexity-O(1);
+//optimize approach -Sliding window concept
+
+function subarraySum(arr, target) {
+    // code here
+    let start=0;
+    let end=0;
+    let sum=0;
+    while(end<arr.length){
+      sum += arr[end];
+      while(sum>target && start<=end){
+        sum = sum-arr[start];
+        start++;
+      }
+      if(sum === target){
+        return [start+1,end+1];
+      }
+      end++;
+    }
+    return [-1];
+}
+//time complexity-O(n) space complexity-O(1);
+
+console.log(subarraySum([1,2,0,3,7,5],2)); //2,5
+console.log(subarraySum([1,2,3,7,5],12)); //2,5
+console.log(subarraySum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],15)); //1,5
+console.log(subarraySum([5,3,4],2));//-1
+console.log(subarraySum([1,2,0,3,7,5,12],12));//2,5
