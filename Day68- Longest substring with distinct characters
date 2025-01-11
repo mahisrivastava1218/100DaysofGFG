@@ -1,0 +1,17 @@
+function longestUniqueSubstr(s) {
+    // code here
+    let start=0;let size=0;const map=new Map();
+    for(let i=0;i<s.length;i++){
+        if(map.has(s.charAt(i))){
+            start=Math.max(start,map.get(s.charAt(i))+1);
+        }
+        map.set(s.charAt(i),i);
+        size= Math.max(size,i-start+1);
+    }
+    return size;
+}
+//time complexity-O(n) space complexity-O(n)
+console.log(longestUniqueSubstr("hqghumeaylnlfdxfircvscxggbwkfnqduxwfnfozvs")); //10
+console.log(longestUniqueSubstr("abcdefabcbb"));
+console.log(longestUniqueSubstr("aaa"));
+console.log(longestUniqueSubstr("geeksforgeeks"));
