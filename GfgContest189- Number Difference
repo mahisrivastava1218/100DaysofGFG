@@ -1,0 +1,19 @@
+  // let a = parseInt(Math.log(n)/Math.log(2));
+        // let leftshift = 1<<a;
+        // leftshift= leftshift|leftshift-1;
+        // let invert = n^leftshift;
+        // return n-invert;
+        
+        let bitcount=0;
+        let diff=0;
+        while(n){
+            if(n&1){
+                diff += (1<<bitcount);
+            }else{
+                diff -=(1<<bitcount);
+            }
+            bitcount++;
+            n>>=1;
+        }
+        return diff;
+//time 
