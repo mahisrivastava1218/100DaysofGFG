@@ -1,0 +1,41 @@
+
+function  maxWater(arr) {
+    let res=0;
+    for(let i=1;i<arr.length-1;i++){
+        let left=arr[i];
+        for(let j=0;j<i;j++){
+             left=Math.max(left,arr[j]);
+        }
+        let right=arr[i];
+        for(let j=i+1;j<arr.length;j++){
+             right=Math.max(right,arr[j]);
+        }
+        res += Math.min(left,right)-arr[i];
+    }
+    return res;
+}
+//time complexity-O(n^2) Space-Complexity-O(1)
+//optimize time complexity
+function  maxWater(arr) {
+    let n=arr.length;
+       let prefix= new Array(n);
+       let suffix= new Array(n);
+       prefix[0]= arr[0];
+       for(let i=1;i<n;i++){
+           prefix[i] = Math.max(prefix[i-1],arr[i]);
+       }
+       suffix[n-1]= arr[n-1];
+       for(let j=n-2;j>=0;j--){
+           suffix[j] = Math.max(suffix[j+1],arr[j]);
+       }
+       let res=0;
+       for(let i=1;i<n-1;i++){
+               res += Math.min(suffix[i],prefix[i])-arr[i];
+       }
+       return res;
+ }
+ //Time complexity-O(n) Space complexity-O(n)
+ console.log(maxWater([3,0,1,0,4,0,2]));
+ console.log(maxWater([3,0,2,0,4]));
+ console.log(maxWater([1,2,3,4]));
+ console.log(maxWater([2,1,5,3,1,0,4]));
