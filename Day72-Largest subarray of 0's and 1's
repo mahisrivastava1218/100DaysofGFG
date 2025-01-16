@@ -1,0 +1,42 @@
+function maxLen(arr) {
+    // code here
+    let ans=0;
+    for(let i=0;i<arr.length;i++){
+        let countzero =0;
+        let countone =0;
+        for(let j=i;j<arr.length;j++){
+            if(arr[j]===0){
+                countzero++;
+            }else{
+                countone++;
+            }
+            if(countzero === countone && (j-i+1)>ans){
+                ans = j-i+1;
+            }
+        }
+    }
+    return ans;
+}
+//tc-O(n^2) sc-O(1)
+//optimize approach prefixsum and map storing in map if prefixsum not exist else update my ans tc:O(n) sc:O(n)
+function maxLen(arr) {
+    // code here
+    let ans=0;
+    let prefixsum=0;
+    let map=new Map();
+    for(let i=0;i<arr.length;i++){
+       prefixsum += arr[i]===0?-1:1;
+       if(prefixsum === 0){
+           ans = i+1;
+       }else if(map.has(prefixsum)){
+           ans = Math.max(ans,i-map.get(prefixsum));
+       }
+      else{
+           map.set(prefixsum,i);
+       }
+    }
+    return ans;
+}
+console.log(maxLen([1,0,1,1,1,0,0]));
+console.log(maxLen([0,0,1,1,0]));
+console.log(maxLen([0]));
