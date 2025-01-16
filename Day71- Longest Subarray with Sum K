@@ -1,0 +1,39 @@
+  function longestSubarray(arr, k) {
+        // code here
+        let storesum =0;
+        for(let i=0;i<arr.length;i++){
+            let sum = arr[i];
+            for(let j=i+1;j<arr.length;j++){
+                sum += arr[j];
+                if(sum === k && j>storesum){
+                    storesum = j-i+1;
+                }
+            }
+        }
+        return storesum;
+    }
+  //tc-O(n^2) sc-O(1);
+//prefixsum and map
+ function longestSubarray(arr, k) {
+    let prefixsum=0;
+    let ans=0;
+    let map=new Map();
+    for(let i=0;i<arr.length;i++){
+        prefixsum +=arr[i];
+        if(prefixsum ===k){
+              ans = i+1;
+
+        }else if(map.has(prefixsum-k)){
+            ans = Math.max(ans,i-map.get(prefixsum-k));
+        }
+        if(!map.has(prefixsum))map.set(prefixsum,i);
+       
+    }
+  return ans;
+}
+//tc-O(n) sc-O(n)
+console.log(longestSubarray([10, 5, 2, 7, 1, -10],15));
+console.log(longestSubarray([-5,8,-14,2,4,12],-5));
+console.log(longestSubarray([10,-10,20,30],5));
+console.log(longestSubarray([10,-5,10,10,-15,30],5));
+
