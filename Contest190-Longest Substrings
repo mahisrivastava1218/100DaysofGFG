@@ -1,0 +1,21 @@
+findSubstring(s) {
+        // code here
+        let map= new Map();
+        for(let i=0;i<s.length;i++){
+          map.set(s[i], (map.get(s[i]) || 0) + 1);
+        }
+        let firsthalf="";
+        let middle="";
+        for(let [key,val] of map){
+           let halfcount =Math.floor(val/2);
+           firsthalf += key.repeat(halfcount);
+           if(val%2!==0){
+               middle +=key;
+           }
+        }
+        const middlearr= middle.split("").sort().join("");
+        firsthalf = firsthalf.split("").sort().join("");
+        let secondhalf = firsthalf.split("").reverse().join("");
+        if(middlearr) return firsthalf+middlearr[0]+secondhalf;
+        else return firsthalf+secondhalf;
+    }
