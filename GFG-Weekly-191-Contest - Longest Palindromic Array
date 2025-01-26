@@ -1,0 +1,30 @@
+
+class Solution {
+    longestPalindrome(arr) {
+        let left=0;
+        let res=0;
+        let right=arr.length-1;
+        let leftsum = arr[left];
+        let rightsum = arr[right];
+        while(left<right){
+            //3==5 left=3 leftsum=6 right=9 righsum=10 leftsum=10 rightsu res=2 
+            if(leftsum === rightsum){
+                res+=2;
+                left++;
+                right--;
+                leftsum = arr[left];
+                rightsum = arr[right];
+            }else if(leftsum<rightsum){
+                left++;
+                leftsum += arr[left];
+            }else{
+                right--;
+                rightsum += arr[right]
+            }
+        }
+       if(left===right){
+           res++;
+       }
+       return res;
+    }
+}
