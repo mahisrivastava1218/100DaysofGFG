@@ -1,0 +1,16 @@
+absDifference(s) {
+        // code here
+        let isVowel = ["a","e","i","o","u"];
+        let vowel=0;
+        let cons = 0;
+        let res= [];
+        for(let i=0;i<s.length;i++){
+            if(isVowel.includes(s[i])){
+                vowel++;
+            }else{
+                cons++;
+            }
+            res.push(Math.abs(vowel-cons));
+        }
+        return res;
+    }
