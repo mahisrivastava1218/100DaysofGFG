@@ -1,0 +1,21 @@
+  minCharacter(s, t) {
+        // code here
+        let n= s.length;
+        let m=t.length;
+        let ans=n;
+        for(let start=0;start<m;start++){
+            let del=0;
+            let j=start;
+            let i=0;
+            while(i<n && j<m){
+                if(s[i]===t[j]){
+                    j++;
+                }else{
+                    del++;
+                }
+                i++;
+            }
+            ans = Math.min(ans,del+n-i);
+        }
+        return ans;
+    }
