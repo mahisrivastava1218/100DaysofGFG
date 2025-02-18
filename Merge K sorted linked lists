@@ -1,0 +1,36 @@
+class Solution {
+    // Function to merge K sorted linked list.
+    mergeSorted(head1,head2){
+        let dummy = new Node(-1);
+        let curr = dummy;
+        while(head1!==null && head2!==null){
+            if(head1.data<=head2.data){
+                curr.next = head1;
+                head1=head1.next;
+            }else{
+                curr.next = head2;
+                head2 = head2.next;
+            }
+            curr = curr.next;
+        }
+        if(head1){
+            curr.next = head1;
+        }
+        if(head2){
+            curr.next = head2;
+        }
+        return dummy.next;
+    }
+    mergeKLists(arr) {
+        // your code here
+        let res= null;
+        for(let node of arr){
+            res = this.mergeSorted(res,node);
+            console.log(res);
+        }
+        return res;
+    }
+}
+Input: arr[] = [1 -> 2 -> 3, 4 -> 5, 5 -> 6, 7 -> 8]
+Output: 1 -> 2 -> 3 -> 4 -> 5 -> 5 -> 6 -> 7 -> 8
+TC:O(n*k*(k+1)/2)-O(n*k*k) SC-O(1) 
